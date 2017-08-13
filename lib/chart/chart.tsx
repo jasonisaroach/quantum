@@ -131,9 +131,7 @@ export class Chart extends React.Component<IChartProps, IChartState> {
       []
     const nextDatasets = data.datasets || []
 
-    const currentDatasetKeys = currentDatasets.map(
-      this.datasetKeyProvider
-    )
+    const currentDatasetKeys = currentDatasets.map(this.datasetKeyProvider)
     const nextDatasetKeys = nextDatasets.map(this.datasetKeyProvider)
     const newDatasets = nextDatasets.filter(
       (d: object) =>
@@ -141,9 +139,7 @@ export class Chart extends React.Component<IChartProps, IChartState> {
     )
 
     for (let idx = currentDatasets.length - 1; idx >= 0; idx -= 1) {
-      const currentDatasetKey = this.datasetKeyProvider(
-        currentDatasets[idx]
-      )
+      const currentDatasetKey = this.datasetKeyProvider(currentDatasets[idx])
       if (nextDatasetKeys.indexOf(currentDatasetKey) === -1) {
         // deleted series
         currentDatasets.splice(idx, 1)
@@ -184,29 +180,20 @@ export class Chart extends React.Component<IChartProps, IChartState> {
   }
 
   public onClickEvent = (event: React.MouseEvent<HTMLCanvasElement>) => {
-    // this.props.getDatasetAtEvent &&
-    this.getDatasetAtEvent(
-      this.chartInstance.getDatasetAtEvent(event),
-      event
-    )
+    this.getDatasetAtEvent &&
+      this.getDatasetAtEvent(this.chartInstance.getDatasetAtEvent(event), event)
 
-    // this.props.getElementAtEvent &&
-    this.getElementAtEvent(
-      this.chartInstance.getElementAtEvent(event),
-      event
-    )
+    this.getElementAtEvent &&
+      this.getElementAtEvent(this.chartInstance.getElementAtEvent(event), event)
 
-    // this.props.getElementsAtEvent &&
-    this.getElementsAtEvent(
-      this.chartInstance.getElementsAtEvent(event),
-      event
-    )
+    this.getElementsAtEvent &&
+      this.getElementsAtEvent(
+        this.chartInstance.getElementsAtEvent(event),
+        event
+      )
 
-    // this.props.onElementsClick &&
-    this.onElementsClick(
-      this.chartInstance.getElementsAtEvent(event),
-      event
-    )
+    this.onElementsClick &&
+      this.onElementsClick(this.chartInstance.getElementsAtEvent(event), event)
   }
 
   public render() {
@@ -214,11 +201,12 @@ export class Chart extends React.Component<IChartProps, IChartState> {
 
     // bar.update()
     return (
-      <div className={className}>
+      <div>
         <canvas
+          className={className}
           id="bar-chart"
-          width={this.props.width ? this.props.width : '400'}
-          height={this.props.height ? this.props.height : '400'}
+          width={this.props.width}
+          height={this.props.height}
           onClick={this.onClickEvent}
         />
       </div>

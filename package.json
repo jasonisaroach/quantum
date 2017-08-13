@@ -1,7 +1,16 @@
 {
   "name": "quantum-ts",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "dependencies": {
+    "@types/chart.js": "^2.6.2",
+    "@types/classnames": "^2.2.0",
+    "@types/jest": "^20.0.6",
+    "@types/lodash.find": "^4.6.3",
+    "@types/lodash.isequal": "^4.5.2",
+    "@types/node": "^8.0.19",
+    "@types/prop-types": "^15.5.1",
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^15.5.2",
     "babel-eslint": "^7.2.3",
     "chart.js": "^2.6.0",
     "classnames": "^2.2.5",
@@ -17,18 +26,7 @@
     "monaco-loader": "^0.8.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-monaco-editor": "^0.8.1",
-    "@types/chart.js": "^2.6.2",
-    "@types/classnames": "^2.2.0",
-    "@types/jest": "^20.0.6",
-    "@types/lodash.find": "^4.6.3",
-    "@types/lodash.isequal": "^4.5.2",
-    "@types/node": "^8.0.19",
-    "@types/prop-types": "^15.5.1",
-    "@types/react": "^16.0.0",
-    "@types/react-dom": "^15.5.2",
-    "@types/react-monaco-editor": "^0.8.1"
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "app-root-path": "^2.0.1",
