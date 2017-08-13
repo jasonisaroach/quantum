@@ -41,3 +41,7 @@ export class App extends React.Component<IAppProps, IAppState> {
 
 ## License
 Quantum TypeScript is released under the [Apache 2.0](https://choosealicense.com/licenses/apache-2.0/) license
+
+## Latest Release (0.4.0)
+ - [ADDED] - Chart.js!
+ - [FIXED] - Minor issues with Charts not rendering correctly
