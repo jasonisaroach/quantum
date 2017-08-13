@@ -15,11 +15,6 @@ interface IChartProps {
   readonly type: ChartJS.ChartType
   readonly data: ChartJS.ChartData
   readonly options: ChartJS.ChartOptions
-  readonly getDatasetAtEvent?: Function
-  readonly getElementAtEvent?: Function
-  readonly getElementsAtEvent?: Function
-  readonly onElementsClick?: Function
-  readonly datasetKeyProvider?: Function
 }
 
 interface IChartState {
@@ -27,6 +22,11 @@ interface IChartState {
 }
 
 export class Chart extends React.Component<IChartProps, IChartState> {
+  readonly getDatasetAtEvent: Function
+  readonly getElementAtEvent: Function
+  readonly getElementsAtEvent: Function
+  readonly onElementsClick: Function
+  readonly datasetKeyProvider: Function
   // tslint:disable-next-line
   private chartInstance: any
   private shadowData: {}
@@ -132,16 +132,16 @@ export class Chart extends React.Component<IChartProps, IChartState> {
     const nextDatasets = data.datasets || []
 
     const currentDatasetKeys = currentDatasets.map(
-      this.props.datasetKeyProvider
+      this.datasetKeyProvider
     )
-    const nextDatasetKeys = nextDatasets.map(this.props.datasetKeyProvider)
+    const nextDatasetKeys = nextDatasets.map(this.datasetKeyProvider)
     const newDatasets = nextDatasets.filter(
       (d: object) =>
-        currentDatasetKeys.indexOf(this.props.datasetKeyProvider(d)) === -1
+        currentDatasetKeys.indexOf(this.datasetKeyProvider(d)) === -1
     )
 
     for (let idx = currentDatasets.length - 1; idx >= 0; idx -= 1) {
-      const currentDatasetKey = this.props.datasetKeyProvider(
+      const currentDatasetKey = this.datasetKeyProvider(
         currentDatasets[idx]
       )
       if (nextDatasetKeys.indexOf(currentDatasetKey) === -1) {
@@ -150,7 +150,7 @@ export class Chart extends React.Component<IChartProps, IChartState> {
       } else {
         const retainedDataset = Find(
           nextDatasets,
-          (d: object) => this.props.datasetKeyProvider(d) === currentDatasetKey
+          (d: object) => this.datasetKeyProvider(d) === currentDatasetKey
         )
         if (retainedDataset) {
           // update it in place if it is a retained dataset
@@ -185,25 +185,25 @@ export class Chart extends React.Component<IChartProps, IChartState> {
 
   public onClickEvent = (event: React.MouseEvent<HTMLCanvasElement>) => {
     // this.props.getDatasetAtEvent &&
-    this.props.getDatasetAtEvent(
+    this.getDatasetAtEvent(
       this.chartInstance.getDatasetAtEvent(event),
       event
     )
 
     // this.props.getElementAtEvent &&
-    this.props.getElementAtEvent(
+    this.getElementAtEvent(
       this.chartInstance.getElementAtEvent(event),
       event
     )
 
     // this.props.getElementsAtEvent &&
-    this.props.getElementsAtEvent(
+    this.getElementsAtEvent(
       this.chartInstance.getElementsAtEvent(event),
       event
     )
 
     // this.props.onElementsClick &&
-    this.props.onElementsClick(
+    this.onElementsClick(
       this.chartInstance.getElementsAtEvent(event),
       event
     )
