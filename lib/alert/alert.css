@@ -1,0 +1,8 @@
+.alert {
+  color: #f44336; }
+  .alert.disabled {
+    color: #aeaeae; }
+  .alert.update {
+    color: #8900ff; }
+  .alert.success {
+    color: #4fff61; }
