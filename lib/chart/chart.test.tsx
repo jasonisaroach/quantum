@@ -6,6 +6,7 @@ it('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(
     <Chart
+      name="testy"
       width={500}
       height={500}
       options={{

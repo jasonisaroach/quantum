@@ -6,6 +6,8 @@
 
 Use the `MonacoEditor`component to embed a code editor within your project, site, application. The editor defaults to `height: 100%` and `width: 100%`, which is easily changeable by adding the height or width attributes and specifying their new values within Curly brackets - `{ }` -- also called **braces**.
 
+![Preview of MonacoEditor with language: javascript](https://image.prntscr.com/image/vXk-6kRvTR61SQaL8O7Brw.png)
+
 ## Example
 To embed an editor within your app, simply add the `MonacoEditor` tag within any component, or tsx file. This component will automatically spawn its own `<div>` element. Within the `options` field you can specify any compatible option from [monaco](https://microsoft.github.io/monaco-editor/api/index.html).[editor](https://microsoft.github.io/monaco-editor/api/modules/monaco.editor.html).[IEditorOptions](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html). As of August 6, 2017, all 0.9.0 Editor Options are supported.
 

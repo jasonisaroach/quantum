@@ -1,17 +1,14 @@
 import * as React from 'react'
 import * as ClassNames from 'classnames'
 import * as ChartJS from 'chart.js'
+import { IBaseProps } from '../lib/base-props'
 const IsEqual = require('lodash.isequal')
 const Find = require('lodash.find')
 const subChart = require('chart.js')
 
-interface IChartProps {
-  /** The user-defined classes */
-  readonly className?: string
-  readonly width?: number
-  readonly height?: number
+interface IChartProps extends IBaseProps {
   readonly reRender?: boolean
-
+  readonly name: string
   readonly type: ChartJS.ChartType
   readonly data: ChartJS.ChartData
   readonly options: ChartJS.ChartOptions
@@ -197,16 +194,24 @@ export class Chart extends React.Component<IChartProps, IChartState> {
   }
 
   public render() {
-    const className = ClassNames('chart', this.props.className)
+    const className = ClassNames(
+      this.props.name + '-chart',
+      this.props.classNames
+    )
 
     // bar.update()
     return (
-      <div>
+      <div
+        style={{
+          width: this.props.width ? this.props.width : 400,
+          height: this.props.height ? this.props.height : 400
+        }}
+      >
         <canvas
           className={className}
-          id="bar-chart"
-          width={this.props.width}
-          height={this.props.height}
+          id={this.props.name + '-chart'}
+          // width={this.props.width}
+          // height={this.props.height}
           onClick={this.onClickEvent}
         />
       </div>
@@ -215,7 +220,9 @@ export class Chart extends React.Component<IChartProps, IChartState> {
 
   public renderChart() {
     const { options, type, data } = this.props
-    const node = document.getElementById('bar-chart') as HTMLCanvasElement
+    const node = document.getElementById(
+      this.props.name + '-chart'
+    ) as HTMLCanvasElement
     // const data = this.memoizeDataProps()
 
     this.chartInstance = new ChartJS(node, {

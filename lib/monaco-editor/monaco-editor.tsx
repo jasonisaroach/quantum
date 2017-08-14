@@ -1,7 +1,8 @@
 import * as React from 'react'
 import * as classnames from 'classnames'
+import { IBaseProps } from '../lib/base-props'
 
-type MonacoEditorProps = {
+interface IMonacoEditorProps extends IBaseProps {
   value?: string
   defaultValue?: string
   language: string
@@ -9,32 +10,32 @@ type MonacoEditorProps = {
   options: object
   requireConfig?: object | undefined
   context?: any
-  width?: number
-  height?: number
-  classNames?: string
 }
 
-type MonacoEditorState = {}
+interface IMonacoEditorState {}
 
 export class MonacoEditor extends React.Component<
-  MonacoEditorProps,
-  MonacoEditorState
+  IMonacoEditorProps,
+  IMonacoEditorState
 > {
   currentValue: string | undefined
   preventTriggerChangeEvent: boolean
   editor: any
 
-  constructor(props: MonacoEditorProps) {
+  constructor(props: IMonacoEditorProps) {
     super(props)
     this.currentValue = props.value
   }
+
   componentDidMount() {
     this.afterViewInit()
   }
+
   componentWillUnmount() {
     this.destroyMonaco()
   }
-  componentDidUpdate(prevProps: MonacoEditorProps) {
+
+  componentDidUpdate(prevProps: IMonacoEditorProps) {
     const context = this.props.context || window
     if (this.props.value !== this.currentValue) {
       // Always refer to the latest value
@@ -53,10 +54,12 @@ export class MonacoEditor extends React.Component<
       )
     }
   }
+
   // editorWillMount(monaco: any) {
   //   const { editorWillMount } = this.props
   //   this.editorWillMount(monaco)
   // }
+
   // editorDidMount(editor: any, monaco: any) {
   //   const { editorDidMount, onChange } = this.props
   //   this.editorDidMount(editor, monaco)
@@ -70,6 +73,7 @@ export class MonacoEditor extends React.Component<
   //     }
   //   })
   // }
+
   afterViewInit() {
     // const { requireConfig } = this.props
     const loaderUrl = 'vs/loader.js'
@@ -98,6 +102,7 @@ export class MonacoEditor extends React.Component<
         }
       }
     }
+
     // Load AMD loader if necessary
     if (context.__REACT_MONACO_EDITOR_LOADER_ISPENDING__) {
       // We need to avoid loading multiple loader.js when there are multiple editors loading concurrently
@@ -121,6 +126,7 @@ export class MonacoEditor extends React.Component<
       }
     }
   }
+
   initMonaco() {
     const value =
       this.props.value !== null ? this.props.value : this.props.defaultValue
@@ -140,11 +146,13 @@ export class MonacoEditor extends React.Component<
       // this.editorDidMount(this.editor, context.monaco)
     }
   }
+
   destroyMonaco() {
     if (typeof this.editor !== 'undefined') {
       this.editor.dispose()
     }
   }
+
   public render() {
     const classNames = classnames('monaco-editor', this.props.classNames)
     return (

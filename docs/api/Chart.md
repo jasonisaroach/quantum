@@ -4,6 +4,8 @@
 ### Type: [Component](../Glossary.md)
 Use the `Chart` component to embed a dynamic chart within your project, site, application. `Chart` has no defaults, which means simply calling the Chart class will cause errors.
 
+![Preview of Chart with type: line](https://image.prntscr.com/image/IGxJ-TebRPS7_4uUm0yjTQ.png)
+
 ## Example
 To embed a new `Chart` component within your app, simply add the `Chart` tag within any component and supply the required parameters to get a fully functioning chart up and running. This component will spawn a canvas
 
@@ -38,13 +40,7 @@ To embed a new `Chart` component within your app, simply add the `Chart` tag wit
       }]
   }}
   options={{
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero:true
-        }
-      }]
-    }
+    maintainAspectRatio: false
   }}
 />
 ```
@@ -56,17 +52,17 @@ To embed a new `Chart` component within your app, simply add the `Chart` tag wit
 
 ### `type`
 **Type**: `string`
-**React Type**: `prop`
+**React Type**: `props`
 **Required**: `true`
 **Default**: none
 
-Tells `Chart` how to render its data.
+Tells `Chart` how to render its data. **Not all chart types work**, this is due to chart.js' type definitions `type ChartType = 'line' | 'bar' | 'radar' | 'doughnut' | 'polarArea' | 'bubble';` which we can't manually edit without issues.
 
 ---
 
 ### `name`
 **Type**: `string`
-**React Type**: `prop`
+**React Type**: `props`
 **Required**: `true`
 **Default**: none
 
@@ -76,7 +72,7 @@ Gives the new `Chart` a unique `id`, `class`, and `name`. When a name is specifi
 
 ### `data`
 **Type**: `object`
-**React Type**: `state`
+**React Type**: `props`
 **Required**: `true`
 **Default**: none
 
@@ -86,28 +82,34 @@ The data within the new `Chart`. When the data is changed, the chart will refres
 
 ### `options`
 **Type**: `object`
-**React Type**: `prop`
+**React Type**: `props`
 **Required**: `true`
 **Default**: none
 
-The user-defined configuration for the new `Chart`. Currently a `prop` but may be changed to a `state` down the road should the need arise.
+The user-defined configuration for the new `Chart`. Currently a `props` but may be changed to a `state` down the road should the need arise.
+
+**Warning: You must add `maintainAspectRatio: false` for the chart to abide by the `width` and `height` settings**
 
 ---
 
 ### `height`
 **Type**: `number`
-**React Type**: `prop`
+**React Type**: `props`
 **Required**: `false`
 **Default**: `400`
 
 The size parameter to control how tall the new `Chart` should be.
 
+**Warning: You must add `maintainAspectRatio: false` for the chart to abide by the `width` and `height` settings**
+
 ---
 
 ### `width`
 **Type**: `number`
-**React Type**: `prop`
+**React Type**: `props`
 **Required**: `false`
 **Default**: `400`
 
 The size parameter to control how wide the new `Chart` should be.
+
+**Warning: You must add `maintainAspectRatio: false` for the chart to abide by the `width` and `height` settings**
