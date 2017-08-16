@@ -1,7 +1,7 @@
 # Chart
 > Add dynamic charts to your application.
 
-### Type: [Component](../Glossary.md)
+### Type: [Component](../Glossary.md/#Component)
 Use the `Chart` component to embed a dynamic chart within your project, site, application. `Chart` has no defaults, which means simply calling the Chart class will cause errors.
 
 ![Preview of Chart with type: line](https://image.prntscr.com/image/IGxJ-TebRPS7_4uUm0yjTQ.png)

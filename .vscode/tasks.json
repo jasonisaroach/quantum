@@ -5,8 +5,10 @@
   "tasks": [
     {
       "type": "npm",
-      "script": "build-css",
-      "problemMatcher": []
+      "script": "watch-css",
+      "problemMatcher": [
+        "$node-sass"
+      ]
     }
   ]
 }

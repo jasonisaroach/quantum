@@ -20,6 +20,7 @@
         "interface-name": [true, "always-prefix"],
         "jsdoc-format": true,
         "jsx-no-lambda": false,
+        "jsx-boolean-value": false,
         "jsx-no-multiline-js": false,
         "jsx-no-string-ref": false,
         "label-position": true,

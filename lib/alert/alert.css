@@ -1,8 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 .alert {
-  color: #f44336; }
-  .alert.disabled {
-    color: #aeaeae; }
-  .alert.update {
-    color: #8900ff; }
+  background-color: #bdbdbd;
+  color: #424242;
+  max-width: 1000px;
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 4px;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+  padding: 10px 20px;
+  margin: 8px 10px; }
+  .alert:hover {
+    background-color: #e0e0e0;
+    cursor: pointer; }
+  .alert a {
+    color: #424242;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: 500; }
+    .alert a:hover {
+      text-decoration: underline; }
+  .alert.error {
+    background-color: #f44336;
+    color: #ffffff; }
+    .alert.error a {
+      color: #ffffff; }
+    .alert.error:hover {
+      background-color: #ef5350; }
+  .alert.info {
+    background-color: #2196f3;
+    color: #ffffff; }
+    .alert.info a {
+      color: #ffffff; }
+    .alert.info:hover {
+      background-color: #42a5f5; }
   .alert.success {
-    color: #4fff61; }
+    background-color: #4caf50;
+    color: #424242; }
+    .alert.success a {
+      color: #424242; }
+    .alert.success:hover {
+      background-color: #66bb6a; }
+  .alert.update {
+    background-color: #673ab7;
+    color: #ffffff; }
+    .alert.update a {
+      color: #ffffff; }
+    .alert.update:hover {
+      background-color: #7e57c2; }
+  .alert.warning {
+    background-color: #ffeb3b;
+    color: #424242; }
+    .alert.warning a {
+      color: #424242; }
+    .alert.warning:hover {
+      background-color: #ffee58; }

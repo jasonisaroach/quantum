@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ClassNames from 'classnames'
 import { IBaseProps } from '../lib/base-props'
-import './Dialog.css'
+import './dialog.css'
 
 interface IDialogProps extends IBaseProps {
   /** The user-defined classes */
@@ -16,21 +16,21 @@ export class Dialog extends React.Component<IDialogProps, IDialogState> {
     super(props)
   }
 
-  public componentWillMount() {}
+  // public componentWillMount() {}
 
-  public componentDidMount() {}
+  // public componentDidMount() {}
 
-  public componentWillReceiveProps(nextProps: IDialogProps) {}
+  // public componentWillReceiveProps(nextProps: IDialogProps) {}
 
   public shouldComponentUpdate(nextProps: IDialogProps, nextState: IDialogState) {
     return true
   }
 
-  public componentWillUpdate(nextProps: IDialogProps, nextState: IDialogState) {}
+  // public componentWillUpdate(nextProps: IDialogProps, nextState: IDialogState) {}
 
-  public componentDidUpdate(prevProps: IDialogProps, prevState: IDialogState) {}
+  // public componentDidUpdate(prevProps: IDialogProps, prevState: IDialogState) {}
 
-  public componentWillUnmount() {}
+  // public componentWillUnmount() {}
 
   public render() {
     const className = ClassNames('dialog')
